@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="te">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,7 @@
     // Your web app's Firebase configuration
     // IMPORTANT: For production, manage these keys securely using environment variables or a backend service.
     const firebaseConfig = {
-            apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
+              apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
   authDomain: "test-77bb5.firebaseapp.com",
   projectId: "test-77bb5",
   storageBucket: "test-77bb5.firebasestorage.app",
@@ -262,6 +262,15 @@
         transform: scale(1.2);
         opacity: 0.7;
       }
+    }
+    /* Style for talk-back highlight */
+    .speaking-highlight {
+        background-color: #fef08a; /* Tailwind yellow-200 */
+        border-radius: 4px;
+        padding: 2px 4px;
+        margin: -2px -4px;
+        transition: background-color 0.2s ease-in-out;
+        box-shadow: 0 0 10px rgba(254, 240, 138, 0.7);
     }
   </style>
 </head>
@@ -1444,6 +1453,13 @@
         ar: "التعرف على الكلام غير مدعوم في هذا المتصفح.",
         ur: "اس براؤزر میں اسپیچ ریکگنیشن کی سہولت نہیں ہے۔"
       },
+       speech_synthesis_not_supported: {
+        te: "ఈ బ్రౌజర్‌లో టెక్స్ట్-టు-స్పీచ్‌కు మద్దతు లేదు.",
+        en: "Text-to-speech is not supported in this browser.",
+        hi: "इस ब्राउज़र में टेक्स्ट-टू-स्पीच समर्थित नहीं है।",
+        ar: "تحويل النص إلى كلام غير مدعوم في هذا المتصفح.",
+        ur: "اس براؤزر میں ٹیکسٹ ٹو اسپیچ کی سہولت نہیں ہے۔"
+      },
       speech_error: {
         te: "స్పీచ్ ఎర్రర్: {error}",
         en: "Speech Error: {error}",
@@ -1457,8 +1473,9 @@
       sms_button: { te: "SMS పంపండి", en: "Send SMS", hi: "एसएमएस भेजें", ar: "إرسال رسالة نصية", ur: "ایس ایم ایس بھیجیں" },
       call_button: { te: "కాల్ చేయండి", en: "Call", hi: "कॉल करें", ar: "اتصل", ur: "کال کریں" },
       download_button: { te: "డౌన్‌లోడ్", en: "Download", hi: "डाउनलोड", ar: "تحميل", ur: "ڈاؤن لوڈ کریں" },
+       read_aloud_button: { te: "గట్టిగా చదువు", en: "Read Aloud", hi: "जोर से पढ़ें", ar: "اقرأ بصوت عالٍ", ur: "بلند آواز سے پڑھیں" },
       download_error: { te: "లాగ్‌ను డౌన్‌లోడ్ చేయడంలో విఫలమైంది.", en: "Failed to download log.", hi: "लॉग डाउनलोड करने में विफल।", ar: "فشل تنزيل السجل.", ur: "لاگ ڈاؤن لوڈ کرنے میں ناکام۔" },
-      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال کرنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
+      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال करने کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_send_error: { te: "SMS పంపడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to send SMS.", hi: "SMS भेजने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح لإرسال رسالة نصية.", ur: "ایس ایم ایس بھیجنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_body_template: {
         te: "మీ ట్రాక్టర్ పని వివరాలు:\nతేదీ: {date}\nపేరు: {name}\nఫోన్: {phone}\n{hourlyDetails}\n{tripDetails}\nమొత్తం: {totalEarnings}\nనోట్: {noteContent}\nచెల్లింపు స్థితి: {paymentStatus}",
@@ -1847,6 +1864,7 @@
 
     // Function to show/hide sections
     function showSection(sectionId) {
+        stopSpeech(); // Stop any speech when changing views
         const sections = ['dashboardSection', 'logsSection', 'leaderboardSection', 'customerLogsSection', 'monthlyDashboardSection', 'monthlyNetSection', 'dieselSection', 'dieselHistorySection', 'dieselDashboardSection'];
         sections.forEach(id => {
             const section = document.getElementById(id);
@@ -2311,35 +2329,40 @@
       recordsToDisplay.forEach(record => {
         const logCard = document.createElement('div');
         logCard.className = 'bg-white border border-gray-200 rounded-xl p-4 shadow-sm';
+        const ts = record.timestamp; // for unique IDs
 
         let hourlyDetailsHtml = '';
         if (record.hourly) {
           hourlyDetailsHtml = `
-            <h4 class="font-semibold text-gray-700 mt-2 mb-1">${T('hourly_time_label')}</h4>
-            <p class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('work_time')}:</span> ${formatTime12Hour(record.hourly.start)} - ${formatTime12Hour(record.hourly.end)}</p>
-            <p class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('rate')}:</span> ₹${formatNumberWithCommas(record.hourly.rate)} / hr</p>
-            <p class="text-base text-gray-800"><span class="font-bold">${T('duration')}:</span> ${record.hourly.time}</p>
-            <p class="text-base text-gray-800"><span class="font-bold">${T('earnings')}:</span> ₹${formatNumberWithCommas(record.hourly.earnings)}</p>
+            <div id="hourly_details_${ts}">
+                <h4 id="hourly_details_heading_${ts}" class="font-semibold text-gray-700 mt-2 mb-1">${T('hourly_time_label')}</h4>
+                <p id="hourly_details_work_time_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('work_time')}:</span> ${formatTime12Hour(record.hourly.start)} - ${formatTime12Hour(record.hourly.end)}</p>
+                <p id="hourly_details_rate_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('rate')}:</span> ₹${formatNumberWithCommas(record.hourly.rate)} / hr</p>
+                <p id="hourly_details_duration_${ts}" class="text-base text-gray-800"><span class="font-bold">${T('duration')}:</span> ${record.hourly.time}</p>
+                <p id="hourly_details_earnings_${ts}" class="text-base text-gray-800"><span class="font-bold">${T('earnings')}:</span> ₹${formatNumberWithCommas(record.hourly.earnings)}</p>
+            </div>
           `;
         }
 
         let tripDetailsHtml = '';
         if (record.trip) {
           tripDetailsHtml = `
-            <h4 class="font-semibold text-gray-700 mt-2 mb-1">${T('trip_earnings_label')}</h4>
-            <p class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('trips_count_log')}:</span> ${record.trip.numberOfTrips}</p>
-            <p class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('cost_per_trip_log')}:</span> ₹${formatNumberWithCommas(record.trip.costPerTrip)}</p>
-            <p class="text-base text-gray-800"><span class="font-bold">${T('total_trips_display_log')}:</span> ${record.trip.tripsDisplay}</p>
-            <p class="text-base text-gray-800"><span class="font-bold">${T('earnings')}:</span> ₹${formatNumberWithCommas(record.trip.earnings)}</p>
+            <div id="trip_details_${ts}">
+                <h4 id="trip_details_heading_${ts}" class="font-semibold text-gray-700 mt-2 mb-1">${T('trip_earnings_label')}</h4>
+                <p id="trip_details_count_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('trips_count_log')}:</span> ${record.trip.numberOfTrips}</p>
+                <p id="trip_details_cost_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('cost_per_trip_log')}:</span> ₹${formatNumberWithCommas(record.trip.costPerTrip)}</p>
+                <p id="trip_details_total_display_${ts}" class="text-base text-gray-800"><span class="font-bold">${T('total_trips_display_log')}:</span> ${record.trip.tripsDisplay}</p>
+                <p id="trip_details_earnings_${ts}" class="text-base text-gray-800"><span class="font-bold">${T('earnings')}:</span> ₹${formatNumberWithCommas(record.trip.earnings)}</p>
+            </div>
           `;
         }
         
         let noteDetailsHtml = '';
         if (record.noteContent) {
           noteDetailsHtml = `
-            <div class="mt-3 pt-3 border-t border-gray-100">
-              <h4 class="font-semibold text-gray-700 mb-1"><span class="font-bold">${T('note_content_label')}:</span></h4>
-              <p class="text-sm text-gray-700 whitespace-pre-wrap">${sanitizeHTML(record.noteContent)}</p>
+            <div id="note_content_${ts}" class="mt-3 pt-3 border-t border-gray-100">
+              <h4 id="note_content_heading_${ts}" class="font-semibold text-gray-700 mb-1"><span class="font-bold">${T('note_content_label')}:</span></h4>
+              <p id="note_content_text_${ts}" class="text-sm text-gray-700 whitespace-pre-wrap">${sanitizeHTML(record.noteContent)}</p>
             </div>
           `;
         }
@@ -2351,27 +2374,30 @@
 
         logCard.innerHTML = `
           <div class="flex items-center justify-between mb-2">
-            <h3 class="font-semibold text-lg text-green-800">${record.date}</h3>
-            <span class="text-sm text-gray-500">${T('saved_on')}: ${new Date(record.timestamp).toLocaleString(currentLang)}</span>
+            <h3 id="date_${ts}" class="font-semibold text-lg text-green-800">${record.date}</h3>
+            <span id="saved_on_${ts}" class="text-sm text-gray-500">${T('saved_on')}: ${new Date(record.timestamp).toLocaleString(currentLang)}</span>
           </div>
-          <p class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('name')}:</span> ${sanitizeHTML(record.userName)}</p>
-          <p class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('phone')}:</span> ${sanitizeHTML(record.userPhoneNumber)}</p>
+          <p id="name_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('name')}:</span> ${sanitizeHTML(record.userName)}</p>
+          <p id="phone_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('phone')}:</span> ${sanitizeHTML(record.userPhoneNumber)}</p>
           ${hourlyDetailsHtml}
           ${tripDetailsHtml}
-          <p class="text-xl font-bold ${paymentColorClass} mt-2 border-t pt-2 border-gray-200" id="combinedEarnings_${record.timestamp}">${T('combined_earnings_label')}: ₹${formatNumberWithCommas(record.combinedTotalEarnings)}</p>
+          <p class="text-xl font-bold ${paymentColorClass} mt-2 border-t pt-2 border-gray-200" id="combinedEarnings_${ts}">${T('combined_earnings_label')}: ₹${formatNumberWithCommas(record.combinedTotalEarnings)}</p>
           ${noteDetailsHtml}
           <div class="flex justify-end items-center gap-2 mt-3" style="flex-wrap: wrap;">
-            <button onclick="updatePaymentStatus('${record.timestamp}', 'paid')" class="px-3 py-1 text-sm font-semibold rounded-md bg-green-100 text-green-700 hover:bg-green-200">${T('paid_status')}</button>
-            <button onclick="updatePaymentStatus('${record.timestamp}', 'due')" class="px-3 py-1 text-sm font-semibold rounded-md bg-red-100 text-red-700 hover:bg-red-200">${T('due_status')}</button>
-            <button onclick="updatePaymentStatus('${record.timestamp}', 'advance')" class="px-3 py-1 text-sm font-semibold rounded-md bg-pink-100 text-pink-700 hover:bg-pink-200">${T('advance_status')}</button>
+            <button onclick="updatePaymentStatus('${ts}', 'paid')" class="px-3 py-1 text-sm font-semibold rounded-md bg-green-100 text-green-700 hover:bg-green-200">${T('paid_status')}</button>
+            <button onclick="updatePaymentStatus('${ts}', 'due')" class="px-3 py-1 text-sm font-semibold rounded-md bg-red-100 text-red-700 hover:bg-red-200">${T('due_status')}</button>
+            <button onclick="updatePaymentStatus('${ts}', 'advance')" class="px-3 py-1 text-sm font-semibold rounded-md bg-pink-100 text-pink-700 hover:bg-pink-200">${T('advance_status')}</button>
             <button onclick="callLoggedNumber('${record.userPhoneNumber}')" class="p-2 text-sm font-semibold rounded-full bg-purple-100 text-purple-700 hover:bg-purple-200" title="${T('call_button')}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.103 6.103l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
             </button>
-            <button onclick="sendLogViaSms('${record.timestamp}')" class="p-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-700 hover:bg-blue-200" title="${T('sms_button')}">
+            <button onclick="sendLogViaSms('${ts}')" class="p-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-700 hover:bg-blue-200" title="${T('sms_button')}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2h-8zM9 4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zM9 8a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zM9 12a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" /><path d="M2 6a2 2 0 012-2h3v12H4a2 2 0 01-2-2V6z" /></svg>
             </button>
-            <button onclick="downloadLog('${record.timestamp}')" class="p-2 text-sm font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200" title="${T('download_button')}">
+            <button onclick="downloadLog('${ts}')" class="p-2 text-sm font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200" title="${T('download_button')}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button id="speakBtn_${ts}" onclick="speakLogEntry('${ts}')" class="p-2 text-sm font-semibold rounded-full bg-yellow-100 text-yellow-700 hover:bg-yellow-200" title="${T('read_aloud_button')}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg>
             </button>
           </div>
         `;
@@ -2621,6 +2647,113 @@
         totalLitresEl.textContent = `${totalLitres.toFixed(2)} L`;
     }
 
+    // --- SPEECH SYNTHESIS (TALK-BACK) ---
+    let currentSpeakingTimestamp = null;
+    const speakerIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg>`;
+    const stopIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 5a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2V5z" clip-rule="evenodd" /></svg>`;
+
+    function stopSpeech() {
+        speechSynthesis.cancel();
+        if (currentSpeakingTimestamp) {
+            const prevButton = document.getElementById(`speakBtn_${currentSpeakingTimestamp}`);
+            if (prevButton) prevButton.innerHTML = speakerIconSVG;
+            const highlighted = document.querySelectorAll('.speaking-highlight');
+            highlighted.forEach(el => el.classList.remove('speaking-highlight'));
+        }
+        currentSpeakingTimestamp = null;
+    }
+
+    function speakLogEntry(timestamp) {
+        if (!('speechSynthesis' in window)) {
+            return showMessage(T('speech_synthesis_not_supported'), 'error');
+        }
+
+        if (currentSpeakingTimestamp === timestamp) {
+            stopSpeech();
+            return;
+        }
+        
+        stopSpeech(); // Stop any previous speech
+        currentSpeakingTimestamp = timestamp;
+        
+        const speakButton = document.getElementById(`speakBtn_${timestamp}`);
+        if(speakButton) speakButton.innerHTML = stopIconSVG;
+
+        const record = JSON.parse(localStorage.getItem('tractorRecords') || '[]').find(rec => rec.timestamp === timestamp);
+        if (!record) {
+            stopSpeech();
+            return;
+        }
+
+        const partsToSpeak = [];
+        const ts = record.timestamp;
+
+        partsToSpeak.push({ text: `${T('name')}: ${record.userName}`, elementId: `name_${ts}` });
+        partsToSpeak.push({ text: `${T('phone')}: ${record.userPhoneNumber}`, elementId: `phone_${ts}` });
+
+        if (record.hourly) {
+            partsToSpeak.push({ text: T('hourly_time_label'), elementId: `hourly_details_heading_${ts}` });
+            partsToSpeak.push({ text: `${T('work_time')}: ${formatTime12Hour(record.hourly.start)} to ${formatTime12Hour(record.hourly.end)}`, elementId: `hourly_details_work_time_${ts}` });
+            partsToSpeak.push({ text: `${T('rate')}: ${formatNumberWithCommas(record.hourly.rate)} rupees per hour`, elementId: `hourly_details_rate_${ts}` });
+            partsToSpeak.push({ text: `${T('duration')}: ${record.hourly.time}`, elementId: `hourly_details_duration_${ts}` });
+            partsToSpeak.push({ text: `${T('earnings')}: ${formatNumberWithCommas(record.hourly.earnings)} rupees`, elementId: `hourly_details_earnings_${ts}` });
+        }
+
+        if (record.trip) {
+            partsToSpeak.push({ text: T('trip_earnings_label'), elementId: `trip_details_heading_${ts}` });
+            partsToSpeak.push({ text: `${T('trips_count_log')}: ${record.trip.numberOfTrips}`, elementId: `trip_details_count_${ts}` });
+            partsToSpeak.push({ text: `${T('cost_per_trip_log')}: ${formatNumberWithCommas(record.trip.costPerTrip)} rupees per trip`, elementId: `trip_details_cost_${ts}` });
+            partsToSpeak.push({ text: `${T('total_trips_display_log')}: ${record.trip.tripsDisplay}`, elementId: `trip_details_total_display_${ts}` });
+            partsToSpeak.push({ text: `${T('earnings')}: ${formatNumberWithCommas(record.trip.earnings)} rupees`, elementId: `trip_details_earnings_${ts}` });
+        }
+
+        partsToSpeak.push({ text: `${T('combined_earnings_label')}: ${formatNumberWithCommas(record.combinedTotalEarnings)} rupees`, elementId: `combinedEarnings_${ts}` });
+
+        if (record.noteContent) {
+            partsToSpeak.push({ text: `${T('note_content_label')}: ${record.noteContent}`, elementId: `note_content_text_${ts}` });
+        }
+
+        let currentIndex = 0;
+        let lastHighlightedElement = null;
+
+        function speakNextPart() {
+            if (lastHighlightedElement) {
+                lastHighlightedElement.classList.remove('speaking-highlight');
+            }
+
+            if (currentIndex >= partsToSpeak.length) {
+                stopSpeech();
+                return;
+            }
+
+            const part = partsToSpeak[currentIndex];
+            const element = document.getElementById(part.elementId);
+            
+            if (element) {
+                element.classList.add('speaking-highlight');
+                lastHighlightedElement = element;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(part.text);
+            const langMap = { 'te': 'te-IN', 'en': 'en-US', 'hi': 'hi-IN', 'ar': 'ar-SA', 'ur': 'ur-PK' };
+            utterance.lang = langMap[currentLang] || 'en-US';
+            
+            utterance.onend = () => {
+                currentIndex++;
+                speakNextPart();
+            };
+            
+            utterance.onerror = (e) => {
+                console.error("Speech synthesis error:", e);
+                stopSpeech();
+            };
+            
+            speechSynthesis.speak(utterance);
+        }
+
+        speakNextPart();
+    }
+
     // Make functions globally accessible
     window.signInWithGoogle = signInWithGoogle;
     window.signUpWithEmail = signUpWithEmail;
@@ -2655,6 +2788,7 @@
     window.startSpeechRecognition = startSpeechRecognition;
     window.showMonthlyNetView = showMonthlyNetView;
     window.renderMonthlyNetView = renderMonthlyNetView;
+    window.speakLogEntry = speakLogEntry;
 
 
     // Initial load:
@@ -2666,6 +2800,9 @@
       setCurrentDateAndStartTime();
       populateUniqueCustomers();
       setupAutocomplete();
+      
+      // Stop speech synthesis when navigating away
+      window.addEventListener('beforeunload', stopSpeech);
     });
 
   </script>
