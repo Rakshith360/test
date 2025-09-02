@@ -17,7 +17,7 @@
     // Your web app's Firebase configuration
     // IMPORTANT: For production, manage these keys securely using environment variables or a backend service.
     const firebaseConfig = {
-              apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
+               apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
   authDomain: "test-77bb5.firebaseapp.com",
   projectId: "test-77bb5",
   storageBucket: "test-77bb5.firebasestorage.app",
@@ -387,15 +387,15 @@
 
         <!-- Menu Buttons with Icons -->
         <button id="viewLogsBtnMenu" onclick="showLogsView(); toggleHamburgerMenu();" title="View Saved Logs" class="menu-icon-btn bg-gradient-to-r from-blue-400 to-blue-600 text-white">
-             <img src="icons/diskette.png"  style="width: 30px; height: 30px;"  alt="">
+             <img src="icons/diskette.png"  style="width: 15px; height: 15px;"  alt="">
         </button>
 
         <button id="leaderboardBtnMenu" onclick="showLeaderboardView(); toggleHamburgerMenu();" title="Leaderboard" class="menu-icon-btn bg-gradient-to-r from-yellow-400 to-yellow-600 text-white">
-             <img src="icons/podium.png"  style="width: 30px; height: 30px;"  alt="">
+             <img src="icons/podium.png"  style="width: 15px; height: 15px;"  alt="">
         </button>
 
         <button id="monthlyDashboardBtnMenu" onclick="showMonthlyDashboardView(); toggleHamburgerMenu();" title="Monthly Dashboard" class="menu-icon-btn bg-gradient-to-r from-indigo-400 to-indigo-600 text-white">
-          <img src="icons/wages.png"  style="width:30px; height: 30px;"  alt="">
+          <img src="icons/wages.png"  style="width: 15px; height: 15px;"  alt="">
         </button>
 
         <!-- NEW: Monthly Net Button -->
@@ -404,7 +404,7 @@
         </button>
 
         <button id="dieselBtnMenu" onclick="showDieselView(); toggleHamburgerMenu();" title="Diesel Monitoring" class="menu-icon-btn bg-gradient-to-r from-orange-400 to-orange-600 text-white">
-             <img src="icons/fuel.png"  style="width: 30px; height: 30px;"  alt="">
+             <img src="icons/fuel.png"  style="width: 15px; height: 15px;"  alt="">
         </button>
 
         <a href="javascript:void(0);" id="feedbackLinkMenu" onclick="handleFeedbackClick('manatractor77@gmail.com');" title="Feedback" class="menu-icon-btn bg-gradient-to-r from-teal-400 to-teal-600 text-white">
@@ -433,7 +433,7 @@
                     <!-- Suggestions are injected here -->
                 </div>
                 <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
-                    <!-- NEW microphone button -->
+                    <!-- microphone button -->
                     <button id="micUserName" onclick="startSpeechRecognition('userName')" title="Speak Name" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
@@ -451,15 +451,23 @@
             </div>
 
             <div class="mb-4">
-              <label id="phoneLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
-              <div class="relative">
-                <input id="userPhoneNumber" type="tel" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
-                <button onclick="callPhoneNumber()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-green-600 focus:outline-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.103 6.103l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                </button>
-              </div>
+                <label id="phoneLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
+                <div class="relative">
+                    <input id="userPhoneNumber" type="tel" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
+                    <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
+                        <button id="micUserPhoneNumber" onclick="startSpeechRecognition('userPhoneNumber')" title="Speak Phone Number" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <button onclick="callPhoneNumber()" title="Call Number" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.103 6.103l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- Hourly Work Form (now combined with trip inputs) -->
@@ -483,26 +491,50 @@
                 </div>
 
                 <div class="mb-4">
-                  <label id="ratePerHourLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                  <input id="ratePerHour" type="number" value="2000" class="w-full border border-gray-300 rounded-lg p-2" />
+                    <label id="ratePerHourLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
+                    <div class="relative">
+                        <input id="ratePerHour" type="number" value="2000" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
+                        <button id="micRatePerHour" onclick="startSpeechRecognition('ratePerHour')" title="Speak Rate" class="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Moved Trip fields here -->
                 <div class="mb-4">
                     <label id="numberOfTripsLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
                     <div class="relative">
-                        <input id="numberOfTrips" type="number" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
+                        <input id="numberOfTrips" type="number" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
+                        <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
+                            <button id="micNumberOfTrips" onclick="startSpeechRecognition('numberOfTrips')" title="Speak Number of Trips" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                    <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="pointer-events-none text-gray-400 p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-4">
                     <label id="costPerTripLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
                      <div class="relative">
-                        <input id="costPerTrip" type="number" value="500" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
+                        <input id="costPerTrip" type="number" value="500" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
+                        <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
+                           <button id="micCostPerTrip" onclick="startSpeechRecognition('costPerTrip')" title="Speak Cost per Trip" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                    <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="pointer-events-none text-gray-400 p-2">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -590,8 +622,13 @@
         <p id="logsTagline" class="text-gray-500 mb-6 text-center"></p>
 
         <!-- Search Bar for Logs -->
-        <div class="mb-4">
-          <input type="text" id="logSearchInput" onkeyup="filterLogs()" class="w-full border border-gray-300 rounded-lg p-2" />
+        <div class="relative mb-4">
+          <input type="text" id="logSearchInput" onkeyup="filterLogs()" class="w-full border border-gray-300 rounded-lg p-2 pl-10" />
+           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+            </div>
         </div>
 
         <!-- Logs Container -->
@@ -994,6 +1031,7 @@
     let currentUserName = '';
     let currentUserPhoneNumber = '';
     let currentLang = 'te'; // Default language
+    let currentSpeechTargetId = null; // For tracking speech recognition target
 
     // Global variables for holding calculated values before saving
     let currentHourlyEarnings = 0;
@@ -1095,6 +1133,9 @@
         ar: "السعر بالساعة (₹)",
         ur: "فی گھنٹہ کی شرح (₹)"
       },
+      rate_per_hour_placeholder: {
+        te: "ఉదా: 2000", en: "e.g., 2000", hi: "उदा: 2000", ar: "مثال: 2000", ur: "مثال: 2000"
+      },
       calculate_button_title: {
         te: "లెక్కించు",
         en: "Calculate",
@@ -1130,12 +1171,18 @@
         ar: "عدد الرحلات",
         ur: "ٹرپس کی تعداد"
       },
+       trips_placeholder: {
+        te: "ఉదా: 5", en: "e.g., 5", hi: "उदा: 5", ar: "مثال: 5", ur: "مثال: 5"
+      },
       cost_per_trip_label: {
         te: "ఒక ట్రిప్‌కు ధర (₹)",
         en: "Cost per Trip (₹)",
         hi: "प्रति ट्रिप लागत (₹)",
         ar: "التكلفة لكل رحلة (₹)",
         ur: "فی ٹرپ لاگت"
+      },
+      cost_per_trip_placeholder: {
+        te: "ఉదా: 500", en: "e.g., 500", hi: "उदा: 500", ar: "مثال: 500", ur: "مثال: 500"
       },
       trip_count_display_label: {
         te: "మొత్తం ట్రిప్పులు",
@@ -1381,7 +1428,7 @@
         en: "Please fill all details and calculate earnings before saving.",
         hi: "कृपया सभी विवरण भरें और सहेजने से पहले कमाई की गणना करें।",
         ar: "الرجاء تعبئة جميع التفاصيل وحساب الأرباح قبل الحفظ.",
-        ur: "براہ کرم تمام تفصیلات بھریں اور محفوظ करने से पहले کمائی کا حساب لگائیں۔"
+        ur: "براہ کرم تمام تفصیلات بھریں اور محفوظ کرنے से पहले کمائی کا حساب لگائیں۔"
       },
       data_saved_success: {
         te: "డేటా విజయవంతంగా సేవ్ చేయబడింది!",
@@ -1475,7 +1522,7 @@
       download_button: { te: "డౌన్‌లోడ్", en: "Download", hi: "डाउनलोड", ar: "تحميل", ur: "ڈاؤن لوڈ کریں" },
        read_aloud_button: { te: "గట్టిగా చదువు", en: "Read Aloud", hi: "जोर से पढ़ें", ar: "اقرأ بصوت عالٍ", ur: "بلند آواز سے پڑھیں" },
       download_error: { te: "లాగ్‌ను డౌన్‌లోడ్ చేయడంలో విఫలమైంది.", en: "Failed to download log.", hi: "लॉग डाउनलोड करने में विफल।", ar: "فشل تنزيل السجل.", ur: "لاگ ڈاؤن لوڈ کرنے میں ناکام۔" },
-      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال करने کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
+      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال کرنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_send_error: { te: "SMS పంపడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to send SMS.", hi: "SMS भेजने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح لإرسال رسالة نصية.", ur: "ایس ایم ایس بھیجنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_body_template: {
         te: "మీ ట్రాక్టర్ పని వివరాలు:\nతేదీ: {date}\nపేరు: {name}\nఫోన్: {phone}\n{hourlyDetails}\n{tripDetails}\nమొత్తం: {totalEarnings}\nనోట్: {noteContent}\nచెల్లింపు స్థితి: {paymentStatus}",
@@ -1588,15 +1635,20 @@
         };
 
         recognition.onresult = function(event) {
-            const transcript = event.results[0][0].transcript;
-            const targetElementId = activeMicButton.id.includes('UserName') ? 'userName' : 'noteContent';
-            const targetElement = document.getElementById(targetElementId);
+            const transcript = event.results[0][0].transcript.replace(/\.$/, ''); // Remove trailing period
+            const targetElement = document.getElementById(currentSpeechTargetId);
 
-            if(targetElement.tagName.toLowerCase() === 'textarea') {
+            if (!targetElement) return;
+
+            // For number fields, try to clean the transcript
+            if (targetElement.type === 'number' || targetElement.type === 'tel') {
+                const numbers = transcript.replace(/[^0-9]/g, '');
+                targetElement.value = numbers;
+            } else if(targetElement.tagName.toLowerCase() === 'textarea') {
                 // Append to existing content for textarea
                 targetElement.value += (targetElement.value.length > 0 ? ' ' : '') + transcript;
             } else {
-                 // Replace content for input
+                 // Replace content for other inputs
                  targetElement.value = transcript;
             }
         };
@@ -1607,13 +1659,13 @@
             return showMessage(T('speech_not_supported'), 'error');
         }
         
-        // Use a try-catch block in case stop() is called before start()
         try { recognition.stop(); } catch(e) {}
 
-        const targetElement = document.getElementById(targetId);
-        activeMicButton = document.getElementById(targetId === 'userName' ? 'micUserName' : 'micNoteContent');
+        const micButtonId = 'mic' + targetId.charAt(0).toUpperCase() + targetId.slice(1);
+        activeMicButton = document.getElementById(micButtonId);
         
-        // Map app language codes to speech API language codes
+        currentSpeechTargetId = targetId;
+        
         const langMap = { 'te': 'te-IN', 'en': 'en-US', 'hi': 'hi-IN', 'ar': 'ar-SA', 'ur': 'ur-PK' };
         recognition.lang = langMap[currentLang] || 'en-US';
         
@@ -1741,8 +1793,11 @@
       document.getElementById('startTimeLabel').textContent = T('start_time_label');
       document.getElementById('endTimeLabel').textContent = T('end_time_label');
       document.getElementById('ratePerHourLabel').textContent = T('rate_per_hour_label');
+      document.getElementById('ratePerHour').placeholder = T('rate_per_hour_placeholder');
       document.getElementById('numberOfTripsLabel').textContent = T('total_trips_label');
+      document.getElementById('numberOfTrips').placeholder = T('trips_placeholder');
       document.getElementById('costPerTripLabel').textContent = T('cost_per_trip_label');
+      document.getElementById('costPerTrip').placeholder = T('cost_per_trip_placeholder');
       
       // Update button titles
       document.getElementById('calculateBtn').title = T('calculate_button_title');
