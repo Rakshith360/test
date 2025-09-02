@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="te">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,7 @@
     // Your web app's Firebase configuration
     // IMPORTANT: For production, manage these keys securely using environment variables or a backend service.
     const firebaseConfig = {
-               apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
+                apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
   authDomain: "test-77bb5.firebaseapp.com",
   projectId: "test-77bb5",
   storageBucket: "test-77bb5.firebasestorage.app",
@@ -435,10 +435,7 @@
                 <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
                     <!-- microphone button -->
                     <button id="micUserName" onclick="startSpeechRecognition('userName')" title="Speak Name" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
-                            <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
-                        </svg>
+                         <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
                     </button>
                     <!-- Contact picker button -->
                     <button onclick="getContact()" title="Pick from Contacts" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
@@ -495,10 +492,7 @@
                     <div class="relative">
                         <input id="ratePerHour" type="number" value="2000" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
                         <button id="micRatePerHour" onclick="startSpeechRecognition('ratePerHour')" title="Speak Rate" class="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
-                                <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
-                            </svg>
+                             <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
                         </button>
                     </div>
                 </div>
@@ -510,10 +504,7 @@
                         <input id="numberOfTrips" type="number" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
                         <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
                             <button id="micNumberOfTrips" onclick="startSpeechRecognition('numberOfTrips')" title="Speak Number of Trips" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
-                                    <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
-                                </svg>
+                                 <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
                             </button>
                             <div class="pointer-events-none text-gray-400 p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
@@ -527,10 +518,7 @@
                         <input id="costPerTrip" type="number" value="500" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
                         <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
                            <button id="micCostPerTrip" onclick="startSpeechRecognition('costPerTrip')" title="Speak Cost per Trip" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
-                                    <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
-                                </svg>
+                                <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
                             </button>
                             <div class="pointer-events-none text-gray-400 p-2">
                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
@@ -552,10 +540,7 @@
                     <div class="relative">
                         <textarea id="noteContent" class="w-full border border-gray-300 rounded-lg p-2 pr-10 h-32 resize-none" rows="5" placeholder="Please enter the work info details"></textarea>
                         <button id="micNoteContent" onclick="startSpeechRecognition('noteContent')" title="Speak Note" class="absolute top-2 right-2 text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                  <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
-                                  <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
-                              </svg>
+                               <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
                         </button>
                     </div>
                 </div>
@@ -1437,6 +1422,21 @@
         ar: "تم حفظ البيانات بنجاح!",
         ur: "ڈیٹا کامیابی سے محفوظ کیا گیا!"
       },
+       // NEW: Talkback translations
+      calculation_talkback: {
+        te: "మొత్తం మొత్తం {amount} రూపాయలు",
+        en: "Total Amount {amount} rupees",
+        hi: "कुल राशि {amount} रुपये",
+        ar: "المبلغ الإجمالي {amount} روبية",
+        ur: "کل رقم {amount} روپے"
+      },
+      saved_talkback: {
+        te: "డేటా విజయవంతంగా సేవ్ చేయబడింది",
+        en: "Data saved successfully",
+        hi: "डेटा सफलतापूर्वक सहेजा गया",
+        ar: "تم حفظ البيانات بنجاح",
+        ur: "ڈیٹا کامیابی سے محفوظ ہو گیا"
+      },
       back_button: {
         te: "వెనుకకు",
         en: "Back",
@@ -1522,7 +1522,7 @@
       download_button: { te: "డౌన్‌లోడ్", en: "Download", hi: "डाउनलोड", ar: "تحميل", ur: "ڈاؤن لوڈ کریں" },
        read_aloud_button: { te: "గట్టిగా చదువు", en: "Read Aloud", hi: "जोर से पढ़ें", ar: "اقرأ بصوت عالٍ", ur: "بلند آواز سے پڑھیں" },
       download_error: { te: "లాగ్‌ను డౌన్‌లోడ్ చేయడంలో విఫలమైంది.", en: "Failed to download log.", hi: "लॉग डाउनलोड करने में विफल।", ar: "فشل تنزيل السجل.", ur: "لاگ ڈاؤن لوڈ کرنے میں ناکام۔" },
-      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال کرنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
+      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال करने کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_send_error: { te: "SMS పంపడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to send SMS.", hi: "SMS भेजने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح لإرسال رسالة نصية.", ur: "ایس ایم ایس بھیجنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_body_template: {
         te: "మీ ట్రాక్టర్ పని వివరాలు:\nతేదీ: {date}\nపేరు: {name}\nఫోన్: {phone}\n{hourlyDetails}\n{tripDetails}\nమొత్తం: {totalEarnings}\nనోట్: {noteContent}\nచెల్లింపు స్థితి: {paymentStatus}",
@@ -2280,7 +2280,11 @@
       currentCombinedEarnings = hourlyEarnings + tripEarnings;
       document.getElementById('combinedTotalEarnings').textContent = `₹${formatNumberWithCommas(currentCombinedEarnings)}`;
 
-      if (hourlyCalculationSuccessful || tripCalculationSuccessful) showMessage(T('combined_calculation_success'), 'success');
+      if (hourlyCalculationSuccessful || tripCalculationSuccessful) {
+        showMessage(T('combined_calculation_success'), 'success');
+        const talkbackText = T('calculation_talkback').replace('{amount}', formatNumberWithCommas(currentCombinedEarnings));
+        speakText(talkbackText, 'combinedTotalEarnings'); // Speak and highlight the total
+      }
     }
 
     // Function to save combined data
@@ -2348,6 +2352,7 @@
       populateUniqueCustomers();
 
       showMessage(T('data_saved_success'), 'success');
+      speakText(T('saved_talkback'));
 
       document.getElementById('startTime').value = '';
       document.getElementById('endTime').value = '';
@@ -2718,6 +2723,43 @@
         currentSpeakingTimestamp = null;
     }
 
+    function speakText(text, highlightElementId = null) {
+        if (!('speechSynthesis' in window)) {
+            return;
+        }
+        stopSpeech(); 
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        const langMap = { 'te': 'te-IN', 'en': 'en-US', 'hi': 'hi-IN', 'ar': 'ar-SA', 'ur': 'ur-PK' };
+        utterance.lang = langMap[currentLang] || 'en-US';
+
+        let elementToHighlight = null;
+        if (highlightElementId) {
+            elementToHighlight = document.getElementById(highlightElementId);
+        }
+
+        utterance.onstart = () => {
+            if (elementToHighlight) {
+                elementToHighlight.classList.add('speaking-highlight');
+            }
+        };
+
+        utterance.onend = () => {
+            if (elementToHighlight) {
+                setTimeout(() => elementToHighlight.classList.remove('speaking-highlight'), 500);
+            }
+        };
+
+        utterance.onerror = (e) => {
+            console.error("Speech synthesis error:", e);
+            if (elementToHighlight) {
+                elementToHighlight.classList.remove('speaking-highlight');
+            }
+        };
+
+        speechSynthesis.speak(utterance);
+    }
+
     function speakLogEntry(timestamp) {
         if (!('speechSynthesis' in window)) {
             return showMessage(T('speech_synthesis_not_supported'), 'error');
@@ -2844,6 +2886,7 @@
     window.showMonthlyNetView = showMonthlyNetView;
     window.renderMonthlyNetView = renderMonthlyNetView;
     window.speakLogEntry = speakLogEntry;
+    window.speakText = speakText;
 
 
     // Initial load:
