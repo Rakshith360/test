@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="te">
 <head>
   <meta charset="UTF-8" />
@@ -435,7 +435,10 @@
                 <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
                     <!-- microphone button -->
                     <button id="micUserName" onclick="startSpeechRecognition('userName')" title="Speak Name" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                         <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                            <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                        </svg>
                     </button>
                     <!-- Contact picker button -->
                     <button onclick="getContact()" title="Pick from Contacts" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
@@ -492,7 +495,10 @@
                     <div class="relative">
                         <input id="ratePerHour" type="number" value="2000" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
                         <button id="micRatePerHour" onclick="startSpeechRecognition('ratePerHour')" title="Speak Rate" class="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                             <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -504,7 +510,10 @@
                         <input id="numberOfTrips" type="number" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
                         <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
                             <button id="micNumberOfTrips" onclick="startSpeechRecognition('numberOfTrips')" title="Speak Number of Trips" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                                 <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                    <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                                </svg>
                             </button>
                             <div class="pointer-events-none text-gray-400 p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
@@ -518,7 +527,10 @@
                         <input id="costPerTrip" type="number" value="500" min="0" class="w-full border border-gray-300 rounded-lg p-2 pr-20" />
                         <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
                            <button id="micCostPerTrip" onclick="startSpeechRecognition('costPerTrip')" title="Speak Cost per Trip" class="text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                                <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                    <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                                </svg>
                             </button>
                             <div class="pointer-events-none text-gray-400 p-2">
                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2.05a2.5 2.5 0 014.9 0H21a1 1 0 001-1v-5a1 1 0 00-1-1h-7z"></path></svg>
@@ -540,7 +552,10 @@
                     <div class="relative">
                         <textarea id="noteContent" class="w-full border border-gray-300 rounded-lg p-2 pr-10 h-32 resize-none" rows="5" placeholder="Please enter the work info details"></textarea>
                         <button id="micNoteContent" onclick="startSpeechRecognition('noteContent')" title="Speak Note" class="absolute top-2 right-2 text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
-                               <img src="icons/music.png" style="width: 19px; height: 19px;" alt="">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                  <path fill-rule="evenodd" d="M5.5 8a.5.5 0 00.5.5 2.5 2.5 0 105 0 .5.5 0 00.5-.5V4a.5.5 0 00-.5-.5 3.5 3.5 0 10-7 0v4a.5.5 0 00.5.5z" clip-rule="evenodd" />
+                              </svg>
                         </button>
                     </div>
                 </div>
