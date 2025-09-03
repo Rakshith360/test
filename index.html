@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="te">
 <head>
   <meta charset="UTF-8" />
@@ -1424,11 +1424,18 @@
       },
        // NEW: Talkback translations
       calculation_talkback: {
-        te: "మొత్తం మొత్తం {amount} రూపాయలు",
+        te: "మొత్తం {amount} రూపాయలు",
         en: "Total Amount {amount} rupees",
         hi: "कुल राशि {amount} रुपये",
         ar: "المبلغ الإجمالي {amount} روبية",
         ur: "کل رقم {amount} روپے"
+      },
+      diesel_calculation_talkback: {
+        te: "మొత్తం డీజిల్ ఖర్చు {amount} రూపాయలు",
+        en: "Total diesel cost {amount} rupees",
+        hi: "कुल डीजल लागत {amount} रुपये",
+        ar: "إجمالي تكلفة الديزل {amount} روبية",
+        ur: "کل ڈیزل لاگت {amount} روپے"
       },
       saved_talkback: {
         te: "డేటా విజయవంతంగా సేవ్ చేయబడింది",
@@ -2647,7 +2654,13 @@
     function calculateDieselCost() {
         const price = parseFloat(document.getElementById('dieselPrice').value) || 0;
         const litres = parseFloat(document.getElementById('dieselLitres').value) || 0;
-        document.getElementById('dieselTotalCost').textContent = `₹${formatNumberWithCommas((price * litres).toFixed(2))}`;
+        const totalCost = (price * litres).toFixed(2);
+        document.getElementById('dieselTotalCost').textContent = `₹${formatNumberWithCommas(totalCost)}`;
+        // ADDED: Talkback for diesel calculation
+        if (price > 0 && litres > 0) {
+            const talkbackText = T('diesel_calculation_talkback').replace('{amount}', formatNumberWithCommas(totalCost));
+            speakText(talkbackText, 'dieselTotalCost');
+        }
     }
     function saveDieselData() {
         const price = parseFloat(document.getElementById('dieselPrice').value);
@@ -2786,7 +2799,9 @@
         const ts = record.timestamp;
 
         partsToSpeak.push({ text: `${T('name')}: ${record.userName}`, elementId: `name_${ts}` });
-        partsToSpeak.push({ text: `${T('phone')}: ${record.userPhoneNumber}`, elementId: `phone_${ts}` });
+        // FIXED: Read phone number as individual digits
+        const phoneNumberAsDigits = record.userPhoneNumber.split('').join(' ');
+        partsToSpeak.push({ text: `${T('phone')}: ${phoneNumberAsDigits}`, elementId: `phone_${ts}` });
 
         if (record.hourly) {
             partsToSpeak.push({ text: T('hourly_time_label'), elementId: `hourly_details_heading_${ts}` });
