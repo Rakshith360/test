@@ -17,7 +17,7 @@
     // Your web app's Firebase configuration
     // IMPORTANT: For production, manage these keys securely using environment variables or a backend service.
     const firebaseConfig = {
-                 apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
+                apiKey: "AIzaSyBQ_2xgn6YM0KyuFOOHQ3MNYhfumRdu_Bw",
   authDomain: "test-77bb5.firebaseapp.com",
   projectId: "test-77bb5",
   storageBucket: "test-77bb5.firebasestorage.app",
@@ -1424,7 +1424,7 @@
       },
        // NEW: Talkback translations
       calculation_talkback: {
-        te: "మొత్తం {amount} రూపాయలు",
+        te: "మొత్తం మొత్తం {amount} రూపాయలు",
         en: "Total Amount {amount} rupees",
         hi: "कुल राशि {amount} रुपये",
         ar: "المبلغ الإجمالي {amount} روبية",
@@ -2312,16 +2312,8 @@
         return;
       }
 
-      // Automatically add +91 prefix if not present
-      let phoneNumberToSave = currentUserPhoneNumber.trim();
-      if (!phoneNumberToSave.startsWith('+')) {
-          const digitsOnly = phoneNumberToSave.replace(/\D/g, '');
-          const lastTenDigits = digitsOnly.slice(-10); // Ensure we only have 10 digits
-          phoneNumberToSave = '+91' + lastTenDigits;
-      }
-
       const allRecords = JSON.parse(localStorage.getItem('tractorRecords') || '[]');
-      const existingRecord = allRecords.find(record => record.userPhoneNumber === phoneNumberToSave && record.userName.toLowerCase() !== currentUserName.toLowerCase());
+      const existingRecord = allRecords.find(record => record.userPhoneNumber === currentUserPhoneNumber && record.userName.toLowerCase() !== currentUserName.toLowerCase());
 
       if (existingRecord) {
           showMessage(T('phone_exists_error').replace('{name}', existingRecord.userName), 'error');
@@ -2343,7 +2335,7 @@
       const record = {
         type: 'combined',
         userName: currentUserName,
-        userPhoneNumber: phoneNumberToSave,
+        userPhoneNumber: currentUserPhoneNumber,
         date: document.getElementById('workDate').value,
         noteContent: noteContent,
         timestamp: new Date().toISOString(),
@@ -2377,7 +2369,7 @@
         const allRecords = JSON.parse(localStorage.getItem('tractorRecords') || '[]');
         const filteredRecords = allRecords.filter(record => 
             record.userName.toLowerCase().includes(searchTerm) || 
-            (record.userPhoneNumber && record.userPhoneNumber.includes(searchTerm))
+            record.userPhoneNumber.includes(searchTerm)
         );
         renderLogs(filteredRecords);
     }
