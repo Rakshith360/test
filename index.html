@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="te">
 <head>
   <meta charset="UTF-8" />
@@ -488,10 +488,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="ratePerHour" class="flex items-center text-sm font-medium text-gray-700 mb-1">
-                        <span id="ratePerHourLabel"></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 ml-2 text-green-700"><path d="M20.3 5.4 19 4l-1.3 1.4c-2.4 2.4-3.5 5.8-3.5 8.6h-2c0-2.8-.9-6.2-3.5-8.6L7 4 5.7 5.4c-2.4 2.4-2.4 6.1 0 8.5L12 20.2l6.3-6.3c2.4-2.4 2.4-6.1 2-8.5Z"/><path d="m5.7 5.4 2.8 2.8"/><path d="M15.5 5.4 14 4"/><path d="M4 14h2"/><path d="M18 14h2"/></svg>
-                    </label>
+                    <label id="ratePerHourLabel" class="block text-sm font-medium text-gray-700 mb-1"></label>
                     <div class="relative">
                         <input id="ratePerHour" type="number" value="2000" class="w-full border border-gray-300 rounded-lg p-2 pr-10" />
                         <button id="micRatePerHour" onclick="startSpeechRecognition('ratePerHour')" title="Speak Rate" class="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-500 hover:text-green-600 focus:outline-none p-2 rounded-full hover:bg-gray-100">
@@ -1434,11 +1431,11 @@
         ur: "کل رقم {amount} روپے"
       },
       saved_talkback: {
-        te: "సేవ్ చేయబడింది",
-        en: "Saved",
-        hi: "सहेजा गया",
-        ar: "تم الحفظ",
-        ur: "محفوظ کیا گیا"
+        te: "డేటా విజయవంతంగా సేవ్ చేయబడింది",
+        en: "Data saved successfully",
+        hi: "डेटा सफलतापूर्वक सहेजा गया",
+        ar: "تم حفظ البيانات بنجاح",
+        ur: "ڈیٹا کامیابی سے محفوظ ہو گیا"
       },
       back_button: {
         te: "వెనుకకు",
@@ -1580,17 +1577,6 @@
         const temp = document.createElement('div');
         temp.textContent = str;
         return temp.innerHTML;
-    }
-    
-    // Function to format a phone number with a space for readability
-    function formatPhoneNumber(phone) {
-        if (!phone) return '';
-        const cleaned = ('' + phone).replace(/\D/g, '');
-        if (cleaned.length >= 10) {
-            // Add space after 5 digits for Indian numbers
-            return cleaned.slice(0, 5) + ' ' + cleaned.slice(5);
-        }
-        return phone;
     }
 
     // Helper function to convert 24-hour time (HH:MM) to 12-hour format (HH:MM AM/PM)
@@ -2326,8 +2312,16 @@
         return;
       }
 
+      // Automatically add +91 prefix if not present
+      let phoneNumberToSave = currentUserPhoneNumber.trim();
+      if (!phoneNumberToSave.startsWith('+')) {
+          const digitsOnly = phoneNumberToSave.replace(/\D/g, '');
+          const lastTenDigits = digitsOnly.slice(-10); // Ensure we only have 10 digits
+          phoneNumberToSave = '+91' + lastTenDigits;
+      }
+
       const allRecords = JSON.parse(localStorage.getItem('tractorRecords') || '[]');
-      const existingRecord = allRecords.find(record => record.userPhoneNumber === currentUserPhoneNumber && record.userName.toLowerCase() !== currentUserName.toLowerCase());
+      const existingRecord = allRecords.find(record => record.userPhoneNumber === phoneNumberToSave && record.userName.toLowerCase() !== currentUserName.toLowerCase());
 
       if (existingRecord) {
           showMessage(T('phone_exists_error').replace('{name}', existingRecord.userName), 'error');
@@ -2349,7 +2343,7 @@
       const record = {
         type: 'combined',
         userName: currentUserName,
-        userPhoneNumber: currentUserPhoneNumber,
+        userPhoneNumber: phoneNumberToSave,
         date: document.getElementById('workDate').value,
         noteContent: noteContent,
         timestamp: new Date().toISOString(),
@@ -2383,7 +2377,7 @@
         const allRecords = JSON.parse(localStorage.getItem('tractorRecords') || '[]');
         const filteredRecords = allRecords.filter(record => 
             record.userName.toLowerCase().includes(searchTerm) || 
-            record.userPhoneNumber.includes(searchTerm)
+            (record.userPhoneNumber && record.userPhoneNumber.includes(searchTerm))
         );
         renderLogs(filteredRecords);
     }
@@ -2452,7 +2446,7 @@
             <span id="saved_on_${ts}" class="text-sm text-gray-500">${T('saved_on')}: ${new Date(record.timestamp).toLocaleString(currentLang)}</span>
           </div>
           <p id="name_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('name')}:</span> ${sanitizeHTML(record.userName)}</p>
-          <p id="phone_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('phone')}:</span> ${formatPhoneNumber(sanitizeHTML(record.userPhoneNumber))}</p>
+          <p id="phone_${ts}" class="text-sm text-gray-700 mb-1"><span class="font-bold">${T('phone')}:</span> ${sanitizeHTML(record.userPhoneNumber)}</p>
           ${hourlyDetailsHtml}
           ${tripDetailsHtml}
           <p class="text-xl font-bold ${paymentColorClass} mt-2 border-t pt-2 border-gray-200" id="combinedEarnings_${ts}">${T('combined_earnings_label')}: ₹${formatNumberWithCommas(record.combinedTotalEarnings)}</p>
@@ -2672,7 +2666,6 @@
         existing.push(record);
         localStorage.setItem('dieselRecords', JSON.stringify(existing));
         showMessage(T('diesel_data_saved_success'), 'success');
-        speakText(T('saved_talkback'));
         document.getElementById('dieselPrice').value = '';
         document.getElementById('dieselLitres').value = '';
         document.getElementById('dieselTotalCost').textContent = '₹0';
