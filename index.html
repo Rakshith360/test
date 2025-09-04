@@ -927,6 +927,10 @@
 
             document.getElementById('userProfileNameDisplay').textContent = userName;
             document.getElementById('welcomeHeading').innerHTML = T('welcome_heading').replace('{userName}', userName);
+
+            // Speak welcome message
+            const welcomeSpeech = T('welcome_speech').replace('{userName}', userName);
+            speakText(welcomeSpeech);
         }
         
         showDashboardView();
@@ -1422,6 +1426,13 @@
         ur: "ڈیٹا کامیابی سے محفوظ کیا گیا!"
       },
        // NEW: Talkback translations
+      welcome_speech: {
+        te: "స్వాగతం {userName} అన్న",
+        en: "Welcome {userName} Anna",
+        hi: "स्वागत है {userName} अन्ना",
+        ar: "أهلاً بك {userName} أنا",
+        ur: "خوش آمدید {userName} انا"
+      },
       calculation_talkback: {
         te: "మొత్తం {amount} రూపాయలు",
         en: "Total Amount {amount} rupees",
@@ -1528,7 +1539,7 @@
       download_button: { te: "డౌన్‌లోడ్", en: "Download", hi: "डाउनलोड", ar: "تحميل", ur: "ڈاؤن لوڈ کریں" },
        read_aloud_button: { te: "గట్టిగా చదువు", en: "Read Aloud", hi: "जोर से पढ़ें", ar: "اقرأ بصوت عالٍ", ur: "بلند آواز سے پڑھیں" },
       download_error: { te: "లాగ్‌ను డౌన్‌లోడ్ చేయడంలో విఫలమైంది.", en: "Failed to download log.", hi: "लॉग डाउनलोड करने में विफल।", ar: "فشل تنزيل السجل.", ur: "لاگ ڈاؤن لوڈ کرنے میں ناکام۔" },
-      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال करने کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
+      call_error: { te: "కాల్ చేయడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to call.", hi: "कॉल करने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح للاتصال به.", ur: "کال کرنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_send_error: { te: "SMS పంపడానికి ఫోన్ నంబర్ లేదు.", en: "No phone number available to send SMS.", hi: "SMS भेजने के लिए कोई फ़ोन नंबर उपलब्ध नहीं है।", ar: "لا يوجد رقم هاتف متاح لإرسال رسالة نصية.", ur: "ایس ایم ایس بھیجنے کے لیے کوئی فون نمبر دستیاب نہیں ہے۔" },
       sms_body_template: {
         te: "మీ ట్రాక్టర్ పని వివరాలు:\nతేదీ: {date}\nపేరు: {name}\nఫోన్: {phone}\n{hourlyDetails}\n{tripDetails}\nమొత్తం: {totalEarnings}\nనోట్: {noteContent}\nచెల్లింపు స్థితి: {paymentStatus}",
