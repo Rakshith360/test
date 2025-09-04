@@ -17,7 +17,7 @@
     // Your web app's Firebase configuration
     // IMPORTANT: For production, manage these keys securely using environment variables or a backend service.
     const firebaseConfig = {
-                 apiKey: "AIzaSyCD1cPb51rhl5bqdPQMgGHcc8a3rStkMFg",
+                  apiKey: "AIzaSyCD1cPb51rhl5bqdPQMgGHcc8a3rStkMFg",
   authDomain: "new-test-8d510.firebaseapp.com",
   projectId: "new-test-8d510",
   storageBucket: "new-test-8d510.firebasestorage.app",
@@ -1443,6 +1443,13 @@
         ar: "تم حفظ البيانات بنجاح",
         ur: "ڈیٹا کامیابی سے محفوظ ہو گیا"
       },
+      long_work_warning: {
+        te: "హెచ్చరిక: పని వ్యవధి 5 గంటలు దాటింది.",
+        en: "Warning: Work duration is over 5 hours.",
+        hi: "चेतावनी: कार्य अवधि 5 घंटे से अधिक है।",
+        ar: "تحذير: مدة العمل تزيد عن 5 ساعات.",
+        ur: "انتباہ: کام کا دورانیہ 5 گھنٹے سے زیادہ ہے۔"
+      },
       back_button: {
         te: "వెనుకకు",
         en: "Back",
@@ -2238,6 +2245,11 @@
         if (endMinutes < startMinutes) endMinutes += 24 * 60;
         const durationMinutes = endMinutes - startMinutes;
 
+        // NEW: Anomaly detection for long work hours
+        if (durationMinutes > 300) { // 5 hours * 60 minutes/hour = 300 minutes
+            showMessage(T('long_work_warning'), 'error');
+        }
+
         if (durationMinutes >= 0) {
             const hours = Math.floor(durationMinutes / 60);
             const minutes = durationMinutes % 60;
@@ -2920,4 +2932,3 @@
   </script>
 </body>
 </html>
-
