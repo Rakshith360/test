@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="te">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,7 @@
     // Your web app's Firebase configuration
     // IMPORTANT: For production, manage these keys securely using environment variables or a backend service.
     const firebaseConfig = {
-                  apiKey: "AIzaSyCD1cPb51rhl5bqdPQMgGHcc8a3rStkMFg",
+                   apiKey: "AIzaSyCD1cPb51rhl5bqdPQMgGHcc8a3rStkMFg",
   authDomain: "new-test-8d510.firebaseapp.com",
   projectId: "new-test-8d510",
   storageBucket: "new-test-8d510.firebasestorage.app",
@@ -396,15 +396,6 @@
           <img src="icons/wages.png"  style="width: 30px; height: 30px;"  alt="">
         </button>
 
-        <!-- NEW: Monthly Net Button -->
-        <button id="monthlyNetBtnMenu" onclick="showMonthlyNetView(); toggleHamburgerMenu();" title="Monthly Net Earnings" class="menu-icon-btn bg-gradient-to-r from-cyan-400 to-cyan-600 text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0h.75a.75.75 0 01.75.75v.75m0 0H3m9 3.75v.75a.75.75 0 01-.75.75h-.75m0 0v-.75a.75.75 0 01.75-.75h.75m0 0h.75a.75.75 0 01.75.75v.75m0 0h-.75M9.75 8.25v.75a.75.75 0 01-.75.75H9m0 0v-.75a.75.75 0 01.75-.75h.75m0 0h.75a.75.75 0 01.75.75v.75m0 0H9.75M3 15h12m0 0V9h-3.75M3 15h-1.5a.75.75 0 01-.75-.75V9.75A.75.75 0 011.5 9H3m12 6v-1.5a.75.75 0 00-.75-.75H9.75m0 0v1.5a.75.75 0 01-.75.75H3.75m0 0v-1.5a.75.75 0 00-.75-.75H1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-        </button>
-
-        <button id="dieselBtnMenu" onclick="showDieselView(); toggleHamburgerMenu();" title="Diesel Monitoring" class="menu-icon-btn bg-gradient-to-r from-orange-400 to-orange-600 text-white">
-             <img src="icons/fuel.png"  style="width: 30px; height: 30px;"  alt="">
-        </button>
-
         <button id="logoutBtn" onclick="logout()" title="Logout" class="menu-icon-btn bg-gradient-to-r from-red-500 to-red-700 text-white mt-auto">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
         </button>
@@ -724,139 +715,6 @@
         </footer>
       </div>
 
-      <!-- NEW: Monthly Net Section -->
-      <div id="monthlyNetSection" class="bg-gray-50 w-full max-w-2xl rounded-2xl shadow-xl p-6 relative hidden mx-auto">
-        <!-- Back Button -->
-        <button onclick="showDashboardView()" class="absolute top-4 right-4 bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        </button>
-        <h1 id="monthlyNetHeading" class="text-2xl font-bold text-gray-800 mb-2 text-center">Monthly Net Earnings</h1>
-        <p id="monthlyNetTagline" class="text-gray-500 mb-6 text-center">Your income vs expenses</p>
-        <!-- Month Selector -->
-        <div class="mb-6 max-w-xs mx-auto">
-            <label for="monthlyNetMonthSelector" id="monthlyNetMonthSelectorLabel" class="block text-sm font-medium text-gray-700 mb-1 text-center">Select Month:</label>
-            <select id="monthlyNetMonthSelector" onchange="renderMonthlyNetView()" class="w-full bg-white border border-gray-300 rounded-lg p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></select>
-        </div>
-        <!-- Dashboard Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-gradient-to-br from-green-400 to-blue-500 text-white p-4 rounded-xl shadow-lg">
-                <p id="netTotalEarningsLabel" class="text-md font-semibold opacity-80">Total Earnings</p>
-                <h2 id="netTotalEarningsValue" class="text-3xl font-bold tracking-tight">₹0</h2>
-            </div>
-            <div class="bg-gradient-to-br from-orange-400 to-red-500 text-white p-4 rounded-xl shadow-lg">
-                <p id="netTotalDieselLabel" class="text-md font-semibold opacity-80">Diesel Spent</p>
-                <h2 id="netTotalDieselValue" class="text-3xl font-bold tracking-tight">₹0</h2>
-            </div>
-            <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-4 rounded-xl shadow-lg">
-                <p id="netFinalAmountLabel" class="text-md font-semibold opacity-80">Net Amount</p>
-                <h2 id="netFinalAmountValue" class="text-3xl font-bold tracking-tight">₹0</h2>
-            </div>
-        </div>
-        <!-- Transactions History -->
-        <div id="monthlyNetHistoryContainer" class="log-container space-y-3 max-h-[40vh] overflow-y-auto pr-2">
-            <!-- Transaction items will be loaded here -->
-        </div>
-        <footer class="text-center text-xs text-gray-400 mt-6 pt-4 border-t border-gray-100">
-            <p id="footerTextMonthlyNet"></p>
-        </footer>
-      </div>
-
-      <!-- Diesel Monitoring Section -->
-      <div id="dieselSection" class="bg-white w-full max-w-md rounded-2xl shadow-xl p-6 mx-auto relative hidden">
-        <!-- Back Button -->
-        <button onclick="showDashboardView()" class="absolute top-4 right-4 bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        </button>
-        <h1 id="dieselHeading" class="text-2xl font-bold text-orange-700 mb-4 text-center flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M16,4H14V2H10V4H8C7.45,4 7,4.45 7,5V11C7,11.55 7.45,12 8,12H9.33L7.8,15.4C7.4,16.2 8,17 8.8,17H10V19H12V21H14V19H16V17H17.2C18,17 18.6,16.2 18.2,15.4L16.67,12H18C18.55,12 19,11.55 19,11V5C19,4.45 18.55,4 18,4Z"></path></svg>
-            <span id="dieselHeadingText">Diesel Monitoring</span>
-        </h1>
-        
-        <div class="mb-4">
-            <label id="dieselDateLabel" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
-            <input id="dieselDate" type="date" class="w-full border border-gray-300 rounded-lg p-2" />
-        </div>
-
-        <div class="mb-4">
-            <label id="dieselTimeLabel" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
-            <input id="dieselTime" type="time" class="w-full border border-gray-300 rounded-lg p-2" />
-        </div>
-
-        <div class="mb-4">
-            <label id="dieselPriceLabel" class="block text-sm font-medium text-gray-700 mb-1">Price per Litre (₹)</label>
-            <input id="dieselPrice" type="number" class="w-full border border-gray-300 rounded-lg p-2" placeholder="e.g., 95.50" />
-        </div>
-
-        <div class="mb-4">
-            <label id="dieselLitresLabel" class="block text-sm font-medium text-gray-700 mb-1">Number of Litres</label>
-            <input id="dieselLitres" type="number" class="w-full border border-gray-300 rounded-lg p-2" placeholder="e.g., 20" />
-        </div>
-        
-        <div class="bg-orange-100 p-4 rounded-xl text-center my-4">
-            <p id="dieselTotalCostLabel" class="text-lg text-orange-800 font-semibold">Total Cost</p>
-            <h2 id="dieselTotalCost" class="text-3xl font-extrabold text-orange-700">₹0</h2>
-        </div>
-
-        <div class="flex gap-4 mt-6">
-            <button id="dieselCalculateBtn" onclick="calculateDieselCost()" title="Calculate Diesel Cost" class="main-calc-btn bg-orange-600 text-white hover:bg-orange-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 9h14M5 15h14"></path></svg>
-            </button>
-            <button id="dieselSaveBtn" onclick="saveDieselData()" title="Save Diesel Log" class="main-calc-btn bg-blue-600 text-white hover:bg-blue-700">
-                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
-            </button>
-        </div>
-
-        <div class="mt-4 text-center">
-            <button id="dieselHistoryBtn" onclick="showDieselHistoryView()" class="text-indigo-600 hover:underline">View Diesel History</button>
-             <span class="mx-2 text-gray-400">|</span>
-            <button id="dieselDashboardBtn" onclick="showDieselDashboardView()" class="text-indigo-600 hover:underline">View Diesel Dashboard</button>
-        </div>
-
-        <footer class="text-center text-xs text-gray-400 mt-6 pt-4 border-t border-gray-100">
-            <p id="footerTextDiesel"></p>
-        </footer>
-      </div>
-
-      <!-- Diesel History Section -->
-        <div id="dieselHistorySection" class="bg-white w-full max-w-xl rounded-2xl shadow-xl p-6 relative hidden mx-auto">
-            <button onclick="showDieselView()" class="absolute top-4 right-4 bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-            </button>
-            <h1 id="dieselHistoryHeading" class="text-2xl font-bold text-orange-700 mb-4 text-center mt-4">Diesel History</h1>
-            <div id="dieselHistoryContainer" class="log-container space-y-4 max-h-[65vh] overflow-y-auto pr-2">
-                <!-- Diesel logs will be loaded here -->
-            </div>
-            <footer class="text-center text-xs text-gray-400 mt-6 pt-4 border-t border-gray-100">
-                <p id="footerTextDieselHistory"></p>
-            </footer>
-        </div>
-
-        <!-- Diesel Dashboard Section -->
-        <div id="dieselDashboardSection" class="bg-gray-50 w-full max-w-2xl rounded-2xl shadow-xl p-6 relative hidden mx-auto">
-             <button onclick="showDieselView()" class="absolute top-4 right-4 bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-            </button>
-            <h1 id="dieselDashboardHeading" class="text-2xl font-bold text-gray-800 mb-2 text-center">Monthly Diesel Summary</h1>
-            <div class="mb-6 max-w-xs mx-auto">
-                <label for="dieselMonthSelector" id="dieselMonthSelectorLabel" class="block text-sm font-medium text-gray-700 mb-1 text-center">Select Month:</label>
-                <select id="dieselMonthSelector" onchange="renderDieselDashboard()" class="w-full bg-white border border-gray-300 rounded-lg p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    <!-- Options will be populated by JS -->
-                </select>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gradient-to-br from-orange-400 to-red-500 text-white p-6 rounded-xl shadow-lg">
-                    <p id="dieselTotalSpentLabel" class="text-lg font-semibold opacity-80">Total Spent</p>
-                    <h2 id="dieselDashboardTotalSpent" class="text-4xl font-bold tracking-tight">₹0</h2>
-                </div>
-                <div class="bg-gradient-to-br from-yellow-400 to-amber-500 text-white p-6 rounded-xl shadow-lg">
-                    <p id="dieselTotalLitresLabel" class="text-lg font-semibold opacity-80">Total Litres</p>
-                    <h2 id="dieselDashboardTotalLitres" class="text-4xl font-bold tracking-tight">0 L</h2>
-                </div>
-            </div>
-            <footer class="text-center text-xs text-gray-400 mt-6 pt-4 border-t border-gray-100">
-                <p id="footerTextDieselDashboard"></p>
-            </footer>
-        </div>
   </div>
 
 
@@ -1274,32 +1132,6 @@
       total_amount_label: { te: "మొత్తం ఆదాయం", en: "Total Earnings", hi: "कुल कमाई", ar: "إجمالي الأرباح" },
       total_hours_label: { te: "మొత్తం గంటలు", en: "Total Hours", hi: "कुल घंटे", ar: "إجمالي الساعات" },
       total_trips_label: { te: "మొత్తం ట్రిప్పులు", en: "Total Trips", hi: "कुल यात्राएं", ar: "إجمالي الرحلات" },
-      // Diesel Monitoring
-        diesel_button_title: { te: "డీజిల్ పర్యవేక్షణ", en: "Diesel Monitoring", hi: "डीजल निगरानी", ar: "مراقبة الديزل" },
-        diesel_heading: { te: "డీజిల్ పర్యవేక్షణ", en: "Diesel Monitoring", hi: "डीजल निगरानी", ar: "مراقبة الديزل" },
-        diesel_date_label: { te: "తేదీ", en: "Date", hi: "तारीख", ar: "التاريخ" },
-        diesel_time_label: { te: "సమయం", en: "Time", hi: "समय", ar: "الوقت" },
-        diesel_price_label: { te: "1 లీటరు (₹)", en: "1 litre (₹)", hi: "1 लीटर (₹)", ar: "١ لتر (₹)" },
-        diesel_litres_label: { te: "లీటర్ల సంఖ్య", en: "Number of Litres", hi: "लीटर की संख्या", ar: "عدد اللترات" },
-        diesel_total_cost_label: { te: "మొత్తం ఖర్చు", en: "Total Cost", hi: "कुल लागत", ar: "التكلفة الإجمالية" },
-        diesel_history_button: { te: "డీజిల్ చరిత్రను వీక్షించండి", en: "View Diesel History", hi: "डीजल इतिहास देखें", ar: "عرض تاريخ الديزل" },
-        diesel_dashboard_button: { te: "డీజిల్ డాష్‌బోర్డ్ వీక్షించండి", en: "View Diesel Dashboard", hi: "डीजल डैशबोर्ड देखें", ar: "عرض لوحة قيادة الديزل" },
-        diesel_history_heading: { te: "డీజిల్ చరిత్ర", en: "Diesel History", hi: "डीजल इतिहास", ar: "تاريخ الديزل" },
-        diesel_dashboard_heading: { te: "నెలవారీ డీజిల్ సారాంశం", en: "Monthly Diesel Summary", hi: "मासिक डीजल सारांश", ar: "ملخص الديزل الشهري" },
-        diesel_month_selector_label: { te: "నెల ఎంచుకోండి:", en: "Select Month:", hi: "महीना चुनें:", ar: "اختر الشهر:" },
-        diesel_total_spent_label: { te: "మొత్తం ఖర్చు", en: "Total Spent", hi: "कुल खर्च", ar: "إجمالي الإنفاق" },
-        diesel_total_litres_label: { te: "మొత్తం లీటర్లు", en: "Total Litres", hi: "कुल लीटर", ar: "إجمالي اللترات" },
-        no_diesel_logs_saved: { te: "డీజిల్ లాగ్‌లు ఇంకా సేవ్ చేయబడలేదు.", en: "No diesel logs saved yet.", hi: "अभी तक कोई डीजल लॉग सहेजा नहीं गया है।", ar: "لم يتم حفظ سجلات الديزل بعد." },
-        diesel_data_saved_success: { te: "డీజిల్ డేటా విజయవంతంగా సేవ్ చేయబడింది!", en: "Diesel data saved successfully!", hi: "डीजल डेटा सफलतापूर्वक सहेजा गया!", ar: "تم حفظ بيانات الديزل بنجاح!" },
-        fill_diesel_details_error: { te: "దయచేసి ధర మరియు లీటర్లను నింపండి.", en: "Please fill price and litres.", hi: "कृपया मूल्य और लीटर भरें।", ar: "يرجى ملء السعر واللترات." },
-      // NEW: Monthly Net Translations
-      monthly_net_button_title: { te: "నెలవారీ నికర ఆదాయం", en: "Monthly Net Earnings", hi: "मासिक शुद्ध आय", ar: "صافي الأرباح الشهرية" },
-      monthly_net_heading: { te: "నెలవారీ నికర ఆదాయం", en: "Monthly Net Earnings", hi: "मासिक शुद्ध आय", ar: "صافي الأرباح الشهرية" },
-      monthly_net_tagline: { te: "మీ ఆదాయం వర్సెస్ ఖర్చులు", en: "Your income vs expenses", hi: "आपकी आय बनाम व्यय", ar: "دخلك مقابل نفقاتك" },
-      net_total_earnings_label: { te: "మొత్తం ఆదాయం", en: "Total Earnings", hi: "कुल कमाई", ar: "إجمالي الأرباح" },
-      net_total_diesel_label: { te: "డీజిల్ ఖర్చు", en: "Diesel Spent", hi: "डीजल खर्च", ar: "إنفاق الديزل" },
-      net_final_amount_label: { te: "నికర మొత్తం", en: "Net Amount", hi: "शुद्ध राशि", ar: "المبلغ الصافي" },
-      no_transactions_found: { te: "ఈ నెలకు లావాదేవీలు కనుగొనబడలేదు.", en: "No transactions found for this month.", hi: "इस महीने के लिए कोई लेनदेन नहीं मिला।", ar: "لم يتم العثور على معاملات لهذا الشهر." },
        // Message Box Messages
       name_updated_success: {
         te: "పేరు విజయవంతంగా నవీకరించబడింది!",
@@ -1373,12 +1205,6 @@
         en: "Total Amount {amount} rupees",
         hi: "कुल राशि {amount} रुपये",
         ar: "المبلغ الإجمالي {amount} روبية"
-      },
-      diesel_calculation_talkback: {
-        te: "మొత్తం డీజిల్ ఖర్చు {amount} రూపాయలు",
-        en: "Total diesel cost {amount} rupees",
-        hi: "कुल डीजल लागत {amount} रुपये",
-        ar: "إجمالي تكلفة الديزل {amount} روبية"
       },
       saved_talkback: {
         te: "డేటా విజయవంతంగా సేవ్ చేయబడింది",
@@ -1728,10 +1554,6 @@
       document.getElementById('viewLogsBtnMenu').title = T('view_logs_button_title');
       document.getElementById('leaderboardBtnMenu').title = T('leaderboard_button_title');
       document.getElementById('monthlyDashboardBtnMenu').title = T('monthly_dashboard_button_title');
-      document.getElementById('monthlyNetBtnMenu').title = T('monthly_net_button_title');
-      document.getElementById('dieselBtnMenu').title = T('diesel_button_title');
-      document.getElementById('dieselCalculateBtn').title = T('calculate_button_title');
-      document.getElementById('dieselSaveBtn').title = T('save_button_title');
       
       document.getElementById('hourlyTimeLabel').textContent = T('hourly_time_label');
       document.getElementById('hourlyEarningsLabel').textContent = T('hourly_earnings_label');
@@ -1755,27 +1577,6 @@
       document.getElementById('totalHoursLabel').textContent = T('total_hours_label');
       document.getElementById('totalTripsLabel').textContent = T('total_trips_label');
 
-      document.getElementById('monthlyNetHeading').textContent = T('monthly_net_heading');
-      document.getElementById('monthlyNetTagline').textContent = T('monthly_net_tagline');
-      document.getElementById('monthlyNetMonthSelectorLabel').textContent = T('month_selector_label');
-      document.getElementById('netTotalEarningsLabel').textContent = T('net_total_earnings_label');
-      document.getElementById('netTotalDieselLabel').textContent = T('net_total_diesel_label');
-      document.getElementById('netFinalAmountLabel').textContent = T('net_final_amount_label');
-
-      document.getElementById('dieselHeadingText').textContent = T('diesel_heading');
-      document.getElementById('dieselDateLabel').textContent = T('diesel_date_label');
-      document.getElementById('dieselTimeLabel').textContent = T('diesel_time_label');
-      document.getElementById('dieselPriceLabel').textContent = T('diesel_price_label');
-      document.getElementById('dieselLitresLabel').textContent = T('diesel_litres_label');
-      document.getElementById('dieselTotalCostLabel').textContent = T('diesel_total_cost_label');
-      document.getElementById('dieselHistoryBtn').textContent = T('diesel_history_button');
-      document.getElementById('dieselDashboardBtn').textContent = T('diesel_dashboard_button');
-      document.getElementById('dieselHistoryHeading').textContent = T('diesel_history_heading');
-      document.getElementById('dieselDashboardHeading').textContent = T('diesel_dashboard_heading');
-      document.getElementById('dieselMonthSelectorLabel').textContent = T('diesel_month_selector_label');
-      document.getElementById('dieselTotalSpentLabel').textContent = T('diesel_total_spent_label');
-      document.getElementById('dieselTotalLitresLabel').textContent = T('diesel_total_litres_label');
-
       document.getElementById('confirmModalCancelBtn').textContent = T('cancel_button');
       document.getElementById('confirmModalConfirmBtn').textContent = T('confirm_button');
       
@@ -1786,9 +1587,6 @@
       if (!document.getElementById('logsSection').classList.contains('hidden')) loadLogs();
       if (!document.getElementById('leaderboardSection').classList.contains('hidden')) generateLeaderboard();
       if (!document.getElementById('monthlyDashboardSection').classList.contains('hidden')) { populateMonthSelector(); renderMonthlyDashboard(); }
-      if (!document.getElementById('monthlyNetSection').classList.contains('hidden')) { populateMonthlyNetMonthSelector(); renderMonthlyNetView(); }
-      if (!document.getElementById('dieselHistorySection').classList.contains('hidden')) loadDieselLogs();
-      if (!document.getElementById('dieselDashboardSection').classList.contains('hidden')) { populateDieselMonthSelector(); renderDieselDashboard(); }
       if (!document.getElementById('customerLogsSection').classList.contains('hidden')) {
         const heading = document.getElementById('customerLogsHeading');
         const customerName = heading.getAttribute('data-customer-name');
@@ -1842,7 +1640,7 @@
     // Function to show/hide sections
     function showSection(sectionId) {
         stopSpeech(); // Stop any speech when changing views
-        const sections = ['dashboardSection', 'logsSection', 'leaderboardSection', 'customerLogsSection', 'monthlyDashboardSection', 'monthlyNetSection', 'dieselSection', 'dieselHistorySection', 'dieselDashboardSection'];
+        const sections = ['dashboardSection', 'logsSection', 'leaderboardSection', 'customerLogsSection', 'monthlyDashboardSection'];
         sections.forEach(id => {
             const section = document.getElementById(id);
             if (section) {
@@ -1881,22 +1679,6 @@
     function showLeaderboardView() {
       showSection('leaderboardSection');
       generateLeaderboard();
-    }
-
-    function showDieselView() {
-        showSection('dieselSection');
-        setCurrentDieselDateTime();
-    }
-
-    function showDieselHistoryView() {
-        showSection('dieselHistorySection');
-        loadDieselLogs();
-    }
-
-    function showDieselDashboardView() {
-        showSection('dieselDashboardSection');
-        populateDieselMonthSelector();
-        renderDieselDashboard();
     }
 
     // --- MONTHLY DASHBOARD FUNCTIONS ---
@@ -2016,112 +1798,6 @@
         totalTripsEl.textContent = totalTrips;
     }
     // --- END MONTHLY DASHBOARD FUNCTIONS ---
-
-    // --- NEW MONTHLY NET FUNCTIONS ---
-    function showMonthlyNetView() {
-        showSection('monthlyNetSection');
-        populateMonthlyNetMonthSelector();
-        renderMonthlyNetView();
-    }
-
-    function populateMonthlyNetMonthSelector() {
-        const workRecords = JSON.parse(localStorage.getItem('tractorRecords') || '[]');
-        const dieselRecords = JSON.parse(localStorage.getItem('dieselRecords') || '[]');
-        const monthSelector = document.getElementById('monthlyNetMonthSelector');
-        
-        const uniqueMonths = new Set();
-        [...workRecords, ...dieselRecords].forEach(record => {
-            if (!record.date) return;
-            const recordDate = new Date(record.date);
-            if (isNaN(recordDate.getTime())) return;
-            uniqueMonths.add(`${recordDate.getFullYear()}-${recordDate.getMonth()}`);
-        });
-
-        const now = new Date();
-        uniqueMonths.add(`${now.getFullYear()}-${now.getMonth()}`);
-
-        const sortedMonths = Array.from(uniqueMonths).sort((a, b) => new Date(b.split('-')[0], b.split('-')[1]) - new Date(a.split('-')[0], a.split('-')[1]));
-        
-        const selectedValue = monthSelector.value;
-        monthSelector.innerHTML = '';
-        sortedMonths.forEach(monthStr => {
-            const [year, month] = monthStr.split('-').map(Number);
-            const option = document.createElement('option');
-            option.value = monthStr;
-            option.textContent = new Date(year, month).toLocaleString(currentLang, { month: 'long', year: 'numeric' });
-            monthSelector.appendChild(option);
-        });
-
-        if (sortedMonths.includes(selectedValue)) {
-            monthSelector.value = selectedValue;
-        }
-    }
-
-    function renderMonthlyNetView() {
-        const selectedMonthStr = document.getElementById('monthlyNetMonthSelector').value;
-        const totalEarningsEl = document.getElementById('netTotalEarningsValue');
-        const totalDieselEl = document.getElementById('netTotalDieselValue');
-        const finalAmountEl = document.getElementById('netFinalAmountValue');
-        const historyContainer = document.getElementById('monthlyNetHistoryContainer');
-
-        totalEarningsEl.textContent = '₹0';
-        totalDieselEl.textContent = '₹0';
-        finalAmountEl.textContent = '₹0';
-        historyContainer.innerHTML = '';
-
-        if (!selectedMonthStr) return;
-
-        const [selectedYear, selectedMonth] = selectedMonthStr.split('-').map(Number);
-        
-        // Calculate Total Earnings
-        const workRecords = JSON.parse(localStorage.getItem('tractorRecords') || '[]');
-        const filteredWork = workRecords.filter(r => {
-            const d = new Date(r.date);
-            return !isNaN(d.getTime()) && d.getFullYear() === selectedYear && d.getMonth() === selectedMonth;
-        });
-        const totalEarnings = filteredWork.reduce((sum, r) => sum + (r.combinedTotalEarnings || 0), 0);
-
-        // Calculate Total Diesel
-        const dieselRecords = JSON.parse(localStorage.getItem('dieselRecords') || '[]');
-        const filteredDiesel = dieselRecords.filter(r => {
-            const d = new Date(r.date);
-            return !isNaN(d.getTime()) && d.getFullYear() === selectedYear && d.getMonth() === selectedMonth;
-        });
-        const totalDiesel = filteredDiesel.reduce((sum, r) => sum + (r.totalCost || 0), 0);
-        
-        totalEarningsEl.textContent = `₹${formatNumberWithCommas(totalEarnings)}`;
-        totalDieselEl.textContent = `₹${formatNumberWithCommas(totalDiesel)}`;
-        finalAmountEl.textContent = `₹${formatNumberWithCommas(totalEarnings - totalDiesel)}`;
-
-        // Create and render combined history
-        const earningsHistory = filteredWork.map(r => ({ date: r.date, type: 'earning', desc: `Work for ${r.userName}`, amount: r.combinedTotalEarnings }));
-        const dieselHistory = filteredDiesel.map(r => ({ date: r.date, type: 'expense', desc: `${r.litres}L Diesel`, amount: r.totalCost }));
-        
-        const combinedHistory = [...earningsHistory, ...dieselHistory].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        if(combinedHistory.length === 0) {
-            historyContainer.innerHTML = `<p class="text-center text-gray-500">${T('no_transactions_found')}</p>`;
-            return;
-        }
-
-        combinedHistory.forEach(item => {
-            const isEarning = item.type === 'earning';
-            const card = document.createElement('div');
-            card.className = `flex items-center justify-between p-3 rounded-lg ${isEarning ? 'bg-green-50' : 'bg-red-50'}`;
-            card.innerHTML = `
-                <div>
-                    <p class="font-semibold ${isEarning ? 'text-green-800' : 'text-red-800'}">${item.desc}</p>
-                    <p class="text-xs text-gray-500">${item.date}</p>
-                </div>
-                <p class="text-lg font-bold ${isEarning ? 'text-green-600' : 'text-red-600'}">
-                    ${isEarning ? '+' : '-'}₹${formatNumberWithCommas(item.amount)}
-                </p>
-            `;
-            historyContainer.appendChild(card);
-        });
-    }
-
-    // --- END MONTHLY NET FUNCTIONS ---
 
     // Function to set current date and start time
     function setCurrentDateAndStartTime() {
@@ -2376,7 +2052,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2h-8zM9 4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zM9 8a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zM9 12a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" /><path d="M2 6a2 2 0 012-2h3v12H4a2 2 0 01-2-2V6z" /></svg>
             </button>
             <button onclick="sendLogViaWhatsApp('${ts}')" class="p-2 text-sm font-semibold rounded-full bg-green-100 text-green-700 hover:bg-green-200" title="${T('whatsapp_button')}">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.956-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.651 4.383 1.803 6.182l-.341 1.232 1.257-.324zM12 4.138c4.341 0 7.865 3.524 7.865 7.864s-3.524 7.864-7.865 7.864-7.864-3.524-7.864-7.864 3.523-7.864 7.864-7.864zm-2.525 5.042c-.213-.108-1.258-.621-1.453-.691-.195-.07-.336-.108-.477.108-.141.217-.55.691-.676.833-.125.141-.25.158-.477.05-.227-.108-.968-.357-1.844-1.139-.684-.595-1.139-1.33-1.279-1.558-.141-.227-.014-.347.094-.457.096-.1.213-.261.32-.39.108-.129.141-.217.213-.358.072-.141.036-.261-.018-.37a.885.885 0 0 0-.462-1.111l-.676-.289c-.195-.084-.39-.13-.585-.13-.195 0-.477.068-.691.336-.213.268-.832.812-.832 1.979 0 1.168.854 2.292.97 2.433.115.141 1.672 2.553 4.053 3.56.595.247 1.053.396 1.413.504.595.177 1.129.15 1.562-.093.486-.273 1.413-1.656 1.618-2.227.203-.571.203-1.053.141-1.168-.06-.115-.213-.177-.428-.285z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.956-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.651 4.383 1.803 6.182l-.341 1.232 1.257-.324zM12 4.138c4.341 0 7.865 3.524 7.865 7.864s-3.524 7.864-7.865 7.864-7.864-3.524-7.864-7.864 3.523-7.864 7.864-7.864zm-2.525 5.042c-.213-.108-1.258-.621-1.453-.691-.195-.07-.336-.108-.477.108-.141.217-.55.691-.676.833-.125.141-.25.158-.477.05-.227-.108-.968-.357-1.844-1.139-.684-.595-1.139-1.33-1.279-1.558-.141-.227-.014-.347.094-.457.096-.1.213-.261.32-.39.108-.129.141-.217.213-.358.072-.141.036-.261-.018-.37a.885.885 0 0 0-.462-1.111l-.676-.289c-.195-.084-.39-.13-.585-.13-.195 0-.477.068-.691.336-.213.268-.832.812-.832 1.979 0 1.168.854 2.292.97 2.433.115.141 1.672 2.553 4.053 3.56.595.247 1.053.396 1.413.504.595.177 1.129.15 1.562-.093.486-.273 1.413-1.656 1.618-2.227.203-.571.203-1.053.141-1.168-.06-.115-.213-.177-.428-.285z"/></svg>
             </button>
             <button onclick="downloadLog('${ts}')" class="p-2 text-sm font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200" title="${T('download_button')}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
@@ -2562,85 +2238,6 @@
         a.click();
         document.body.removeChild(a);
     }
-    // --- DIESEL FUNCTIONS ---
-    function setCurrentDieselDateTime() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const date = `${year}-${month}-${day}`;
-        const time = now.toTimeString().split(' ')[0].substring(0, 5);
-        document.getElementById('dieselDate').value = date;
-        document.getElementById('dieselTime').value = time;
-    }
-    function calculateDieselCost() {
-        const price = parseFloat(document.getElementById('dieselPrice').value) || 0;
-        const litres = parseFloat(document.getElementById('dieselLitres').value) || 0;
-        const totalCost = (price * litres).toFixed(2);
-        document.getElementById('dieselTotalCost').textContent = `₹${formatNumberWithCommas(totalCost)}`;
-        // ADDED: Talkback for diesel calculation
-        if (price > 0 && litres > 0) {
-            const talkbackText = T('diesel_calculation_talkback').replace('{amount}', formatNumberWithCommas(totalCost));
-            speakText(talkbackText, 'dieselTotalCost');
-        }
-    }
-    function saveDieselData() {
-        const price = parseFloat(document.getElementById('dieselPrice').value);
-        const litres = parseFloat(document.getElementById('dieselLitres').value);
-        if (!price || !litres || price <= 0 || litres <= 0) return showMessage(T('fill_diesel_details_error'), 'error');
-        const record = { date: document.getElementById('dieselDate').value, time: document.getElementById('dieselTime').value, price, litres, totalCost: price * litres, timestamp: new Date().toISOString() };
-        const existing = JSON.parse(localStorage.getItem('dieselRecords') || '[]');
-        existing.push(record);
-        localStorage.setItem('dieselRecords', JSON.stringify(existing));
-        showMessage(T('diesel_data_saved_success'), 'success');
-        document.getElementById('dieselPrice').value = '';
-        document.getElementById('dieselLitres').value = '';
-        document.getElementById('dieselTotalCost').textContent = '₹0';
-    }
-    function loadDieselLogs() {
-        const container = document.getElementById('dieselHistoryContainer');
-        const allRecords = JSON.parse(localStorage.getItem('dieselRecords') || '[]');
-        container.innerHTML = (allRecords.length === 0) ? `<p class="text-center text-gray-500">${T('no_diesel_logs_saved')}</p>` : '';
-        if (allRecords.length === 0) return;
-        allRecords.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        allRecords.forEach(record => {
-            const logCard = document.createElement('div');
-            logCard.className = 'bg-white border border-gray-200 rounded-xl p-4 shadow-sm';
-            logCard.innerHTML = `<div class="flex justify-between mb-2"><h3 class="font-semibold text-lg text-orange-800">${record.date} at ${formatTime12Hour(record.time)}</h3><span class="text-sm text-gray-500">${new Date(record.timestamp).toLocaleDateString(currentLang)}</span></div><p>${T('diesel_price_label')}: ₹${record.price.toFixed(2)}</p><p>${T('diesel_litres_label')}: ${record.litres} L</p><p class="text-xl font-bold text-orange-700 mt-2 border-t pt-2">${T('diesel_total_cost_label')}: ₹${formatNumberWithCommas(record.totalCost.toFixed(2))}</p>`;
-            container.appendChild(logCard);
-        });
-    }
-    function populateDieselMonthSelector() {
-        const monthSelector = document.getElementById('dieselMonthSelector');
-        const uniqueMonths = new Set(JSON.parse(localStorage.getItem('dieselRecords') || '[]').map(r => `${new Date(r.date).getFullYear()}-${new Date(r.date).getMonth()}`));
-        const now = new Date();
-        uniqueMonths.add(`${now.getFullYear()}-${now.getMonth()}`);
-        const sortedMonths = Array.from(uniqueMonths).sort((a, b) => new Date(b.split('-')[0], b.split('-')[1]) - new Date(a.split('-')[0], a.split('-')[1]));
-        const selectedValue = monthSelector.value;
-        monthSelector.innerHTML = '';
-        sortedMonths.forEach(monthStr => {
-            const [year, month] = monthStr.split('-').map(Number);
-            const option = document.createElement('option');
-            option.value = monthStr;
-            option.textContent = new Date(year, month).toLocaleString(currentLang, { month: 'long', year: 'numeric' });
-            monthSelector.appendChild(option);
-        });
-        if (sortedMonths.includes(selectedValue)) monthSelector.value = selectedValue;
-    }
-    function renderDieselDashboard() {
-        const selectedMonthStr = document.getElementById('dieselMonthSelector').value;
-        const totalSpentEl = document.getElementById('dieselDashboardTotalSpent');
-        const totalLitresEl = document.getElementById('dieselDashboardTotalLitres');
-        totalSpentEl.textContent = '₹0';
-        totalLitresEl.textContent = '0 L';
-        if (!selectedMonthStr) return;
-        const [selectedYear, selectedMonth] = selectedMonthStr.split('-').map(Number);
-        const filteredRecords = JSON.parse(localStorage.getItem('dieselRecords') || '[]').filter(r => new Date(r.date).getFullYear() === selectedYear && new Date(r.date).getMonth() === selectedMonth);
-        const totalSpent = filteredRecords.reduce((sum, r) => sum + r.totalCost, 0);
-        const totalLitres = filteredRecords.reduce((sum, r) => sum + r.litres, 0);
-        totalSpentEl.textContent = `₹${formatNumberWithCommas(totalSpent.toFixed(2))}`;
-        totalLitresEl.textContent = `${totalLitres.toFixed(2)} L`;
-    }
 
     // --- SPEECH SYNTHESIS (TALK-BACK) ---
     let currentSpeakingTimestamp = null;
@@ -2813,15 +2410,7 @@
     window.sendLogViaSms = sendLogViaSms;
     window.sendLogViaWhatsApp = sendLogViaWhatsApp;
     window.downloadLog = downloadLog;
-    window.showDieselView = showDieselView;
-    window.calculateDieselCost = calculateDieselCost;
-    window.saveDieselData = saveDieselData;
-    window.showDieselHistoryView = showDieselHistoryView;
-    window.showDieselDashboardView = showDieselDashboardView;
-    window.renderDieselDashboard = renderDieselDashboard;
     window.startSpeechRecognition = startSpeechRecognition;
-    window.showMonthlyNetView = showMonthlyNetView;
-    window.renderMonthlyNetView = renderMonthlyNetView;
     window.speakLogEntry = speakLogEntry;
     window.speakText = speakText;
 
@@ -2843,5 +2432,3 @@
   </script>
 </body>
 </html>
-
-
